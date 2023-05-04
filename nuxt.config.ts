@@ -5,13 +5,15 @@ export default defineNuxtConfig({
     "primeicons/primeicons.css",
     "primeflex/primeflex.css",
   ],
+
   build: {
     transpile: ["primevue"],
   },
+
   ssr: false,
   modules: ["@nuxtjs/supabase"],
-  sourcemap: {
-    server: true,
-    client: true,
+
+  devtools: {
+    enabled: true,
   },
 });
