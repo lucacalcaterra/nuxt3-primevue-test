@@ -1,7 +1,9 @@
 <script setup>
 
-const client = useSupabaseAuthClient()
-const user = useSupabaseUser()
+const supaAuth = useSupabaseAuthClient()
+const supaUser = useSupabaseUser()
+const supaClient = useSupabaseClient()
+
 
 </script>
 
@@ -18,9 +20,11 @@ const user = useSupabaseUser()
                     class="flex-grow-1 flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 px-5 py-3 border-round">
                 </div>
                 <div class="flex-none flex align-items-center justify-content-center font-bold text-white m-2 px-5 py-3">
-                    <LoginDialog v-if="!user"></LoginDialog>
-                    <p v-else>{{ user.email }} <Button @click="client.auth.signOut()">Logout</Button>
-                    </p>
+                    <LoginDialog v-if="!supaUser"></LoginDialog>
+                    <div v-else>
+                        <div>{{ supaUser.email }}</div>
+                        <div><Button @click="supaAuth.auth.signOut()">Logout</Button></div>
+                    </div>
 
                 </div>
             </div>
