@@ -3,7 +3,7 @@ import { useToast } from 'primevue/usetoast'
 
 const toast = useToast();
 
-const supabase = useSupabaseClient()
+const supabaseAuthClient = useSupabaseAuthClient()
 
 const loading = ref(false)
 const visible = ref(false)
@@ -13,16 +13,14 @@ const password = ref('')
 
 const errorMessage = ref('')
 
-//const logged = useState('logged', false)
 
 
 const handleLogin = async () => {
     try {
         loading.value = true
-        const { error } = await supabase.auth.signInWithPassword({ email: email.value, password: password.value })
+        const { data, error } = await supabaseAuthClient.auth.signInWithPassword({ email: email.value, password: password.value })
         if (error) throw error
         toast.add({ severity: "info", summary: "Authenticated!", life: 3000 });
-        logged.value = true
     } catch (error) {
         alert(error.error_description || error.message)
     } finally {
@@ -36,6 +34,7 @@ const handleLogin = async () => {
 
 <template>
     <Button label="Login" icon="" @click="visible = true" />
+
     <Toast></Toast>
     <Dialog v-model:visible="visible" modal header="Login Dialog" :style="{ width: '50vw' }">
         <div class="flex flex-column gap-2">
