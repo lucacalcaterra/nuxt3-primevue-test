@@ -1,21 +1,17 @@
-import { defineNuxtPlugin } from "#app";
-import PrimeVue from "primevue/config";
+import PrimeVue from 'primevue/config'
+import Button from 'primevue/button'
+import InputText from 'primevue/inputtext'
+import Toast from 'primevue/toast'
+import ToastService from 'primevue/toastservice'
+import Panel from 'primevue/panel'
 
-import 'primevue/resources/primevue.min.css'
-import 'primevue/resources/themes/lara-dark-blue/theme.css'
-import 'primeicons/primeicons.css' 
-import '/node_modules/primeflex/primeflex.css'
+export default defineNuxtPlugin(nuxtApp => {
+    nuxtApp.vueApp.use(PrimeVue, { ripple: true })
+    nuxtApp.vueApp.use(ToastService)
+    nuxtApp.vueApp.component('Button', Button)
+    nuxtApp.vueApp.component('InputText', InputText)
+    nuxtApp.vueApp.component('Toast', Toast),
+    nuxtApp.vueApp.component('Panel', Panel)
 
-import Button from "primevue/button";
-import Panel from "primevue/panel";
-import TabMenu from "primevue/tabmenu";
-import Card from "primevue/card";
-
-export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(PrimeVue, { ripple: true });
-    nuxtApp.vueApp.component("Button", Button);
-    nuxtApp.vueApp.component("Card", Card);
-    nuxtApp.vueApp.component("Panel", Panel);
-    nuxtApp.vueApp.component("TabMenu", TabMenu);
     //other components that you need
-});
+})
