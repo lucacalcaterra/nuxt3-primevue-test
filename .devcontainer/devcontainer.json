@@ -19,7 +19,7 @@
 	"customizations": {
 		"vscode": {
 		  "extensions": [
-			"hollowtree.vue-pack"
+			"Amayakite.aya-vue3-extension-pack"
 		]
 		}
 	  }
