@@ -19,8 +19,7 @@
 	"customizations": {
 		"vscode": {
 		  "extensions": [
-			"Vue.volar",
-			"esbenp.prettier-vscode"
+			"hollowtree.vue-pack"
 		]
 		}
 	  }
